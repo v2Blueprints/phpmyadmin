@@ -1,0 +1,45 @@
+{
+	"title": "nagios",
+	"description": "Nagios Monitoring",
+	"configuration": {
+		"DEBIAN_FRONTEND": "noninteractive",
+		"TZ": "Australia/Sydney"
+	},
+	"os_packages": [
+		{
+			"type": "debian",
+			"name": "phpmyadmin"
+		}
+	],
+	"bindings": [
+		{
+			"type": "embed",
+			"repository": "https://github.com/v2Blueprints/apache",
+			"branch": "hashidocker",
+			"variables": {
+				"port": 8181
+			}
+		},
+		{
+			"type": "connect",
+			"repository": "https://github.com/",
+			"branch": "hashidocker",
+			"variables": {
+				"databasename": "^^identifier^^",
+				"username": "^^identifier^^",
+				"password": "^^random(16)^^"
+			}
+		}
+	],
+	"images": [
+		{
+			"type": "lxd",
+			"image": "images/debian/stretch/cloud"
+		}
+	],
+	"containers": [
+		{
+			"type": "lxd"
+		}
+	]
+}
