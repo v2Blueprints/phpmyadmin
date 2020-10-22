@@ -17,7 +17,8 @@
 			"repository": "https://github.com/v2Blueprints/apache",
 			"branch": "hashidocker",
 			"variables": {
-				"port": 8181
+				"port": 8181,
+				"servername": "^^identifier^^.^^domain_name^^"
 			}
 		},
 		{
