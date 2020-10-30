@@ -2,28 +2,26 @@
 	"title": "nagios",
 	"description": "Nagios Monitoring",
 	"configuration": {
-		"DEBIAN_FRONTEND": "noninteractive",
 		"TZ": "Australia/Sydney"
 	},
-	"os_packages": [
-		{
-			"type": "debian",
-			"name": "phpmyadmin"
-		}
-	],
+	"os_packages": {
+		"adds": [
+			"phpmyadmin"
+		]
+	},
 	"bindings": [
 		{
 			"type": "embed",
 			"repository": "https://github.com/v2Blueprints/apache",
 			"branch": "hashidocker",
-			"variables": {
+			"configuration": {
 				"port": 8181,
 				"servername": "^^identifier^^.^^domain_name^^"
 			}
 		},
 		{
 			"type": "connect",
-			"repository": "https://github.com/",
+			"repository": "https://github.com/v2Blueprints/mariadb",
 			"branch": "hashidocker",
 			"variables": {
 				"databasename": "^^identifier^^",
@@ -35,7 +33,7 @@
 	"images": [
 		{
 			"type": "lxd",
-			"image": "images/debian/stretch/cloud"
+			"image": "enginesd_debian_base"
 		}
 	],
 	"containers": [
