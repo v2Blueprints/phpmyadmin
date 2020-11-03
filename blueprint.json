@@ -12,14 +12,18 @@
 	"bindings": [
 		{
 			"type": "embed",
-			"repository": "https://github.com/MarkRatjens/apache",
+			"descriptor": {
+				"repository": "https://github.com/MarkRatjens/apache"
+			},
 			"variables": {
 				"port": 8181,
 				"servername": "^^identifier^^.^^domain_name^^"
 			}
 		},
 		{
-			"repository": "https://github.com/MarkRatjens/mariadb",
+			"descriptor": {
+				"repository": "https://github.com/MarkRatjens/mariadb"
+			},
 			"variables": {
 				"username": "^^identifier^^",
 				"password": "^^random(16)^^"
