@@ -13,7 +13,7 @@
 		{
 			"type": "embed",
 			"descriptor": {
-				"repository": "https://github.com/MarkRatjens/apache"
+				"repository": "https://github.com/v2Blueprints/apache"
 			},
 			"variables": {
 				"port": 8181,
@@ -22,7 +22,7 @@
 		},
 		{
 			"descriptor": {
-				"repository": "https://github.com/MarkRatjens/mariadb"
+				"repository": "https://github.com/v2Blueprints/mariadb"
 			},
 			"variables": {
 				"username": "^^identifier^^",
