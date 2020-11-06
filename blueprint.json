@@ -12,33 +12,28 @@
 	"bindings": [
 		{
 			"type": "embed",
-			"repository": "https://github.com/v2Blueprints/apache",
-			"branch": "hashidocker",
-			"configuration": {
+			"descriptor": {
+				"repository": "https://github.com/v2Blueprints/apache"
+			},
+			"variables": {
 				"port": 8181,
 				"servername": "^^identifier^^.^^domain_name^^"
 			}
 		},
 		{
-			"type": "connect",
-			"repository": "https://github.com/v2Blueprints/mariadb",
-			"branch": "hashidocker",
+			"descriptor": {
+				"repository": "https://github.com/v2Blueprints/mariadb"
+			},
 			"variables": {
-				"databasename": "^^identifier^^",
 				"username": "^^identifier^^",
 				"password": "^^random(16)^^"
 			}
 		}
 	],
-	"images": [
+	"containers": [
 		{
 			"type": "lxd",
 			"image": "enginesd_debian_base"
-		}
-	],
-	"containers": [
-		{
-			"type": "lxd"
 		}
 	]
 }
