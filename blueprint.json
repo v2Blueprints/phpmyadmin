@@ -30,12 +30,6 @@
 			}
 		}
 	],
-	"images": [
-		{
-			"type": "lxd",
-			"image": "enginesd_debian_base"
-		}
-	],
 	"containers": [
 		{
 			"type": "lxd"
