@@ -32,7 +32,7 @@
 	],
 	"containers": [
 		{
-			"type": "lxd"
+			"type": "lxd",
 			"image": "enginesd_debian_base"
 		}
 	]
