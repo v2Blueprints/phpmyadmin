@@ -13,11 +13,14 @@
 		{
 			"type": "embed",
 			"descriptor": {
-				"repository": "https://github.com/v2Blueprints/apache"
+				"repository": "https://github.com/v2Blueprints/ap_php7"
 			},
 			"variables": {
-				"port": 8181,
-				"servername": "^^identifier^^.^^domain_name^^"
+			    "TZ": "^^TZ^^",
+				"port": "^^port^^",
+				"servername": "^^server_name^^",
+		        "locale": "^^locale^^",
+		        "charset": "^^charset^^"
 			}
 		},
 		{
@@ -32,8 +35,7 @@
 	],
 	"containers": [
 		{
-			"type": "lxd",
-			"image": "enginesd_debian_base"
+			"type": "lxd"
 		}
 	]
 }
