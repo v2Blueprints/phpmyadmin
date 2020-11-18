@@ -1,0 +1,5 @@
+
+passenger_env_var HOME /var/www;
+
+passenger_env_var PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin;
+

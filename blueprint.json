@@ -1,36 +1,38 @@
 {
-	"title": "nagios",
-	"description": "Nagios Monitoring",
+	"title": "Rails",
+	"description": "nginx passenger example",
 	"configuration": {
-		"TZ": "Australia/Sydney"
+		"user": "www",
+		"port": "8889",
+		"servername": "ruby.^^domain_name^^",
+		"ServerAdmin": "ruby Admin",
+		"user_home": "/var/www/",
+		"code_destination": "/var/www/^^identifer^^" 
 	},
 	"os_packages": {
-		"adds": [
-			"phpmyadmin"
+		"adds": [		
+			"nginx",
+			"libnginx-mod-http-passenger"
 		]
 	},
 	"bindings": [
 		{
 			"type": "embed",
 			"descriptor": {
-				"repository": "https://github.com/v2Blueprints/ap_php7"
+				"repository": "https://github.com/v2Blueprints/enginesd_debian_base"
 			},
 			"variables": {
-			    "TZ": "^^TZ^^",
-				"port": "8880",
-				"servername": "sqladmin.^^domain_name^^",
-		        "ServerAdmin": "Mysql Admin",
 		        "locale": "^^locale^^",
 		        "charset": "^^charset^^"
 			}
 		},
 		{
+			"type": "embed",
 			"descriptor": {
-				"repository": "https://github.com/v2Blueprints/mariadb"
+				"repository": "https://github.com/v2Blueprints/ruby_rbenv"
 			},
 			"variables": {
-				"username": "^^identifier^^",
-				"password": "^^random(16)^^"
+				"user": "^^user^^"
 			}
 		}
 	],
