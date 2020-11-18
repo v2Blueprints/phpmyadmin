@@ -1,5 +1,0 @@
-#!/bin/sh
-
-#install ruby
-systemctl enable nginx
-/tmp/packing/scripts/user/ruby_setup
