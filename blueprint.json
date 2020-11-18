@@ -13,7 +13,7 @@
 		{
 			"type": "embed",
 			"descriptor": {
-				"repository": "https://github.com/v2Blueprints/ap_php7"
+				"repository": "https://github.com/MarkRatjens/ap_php7"
 			},
 			"variables": {
 			    "TZ": "^^TZ^^",
@@ -26,7 +26,7 @@
 		},
 		{
 			"descriptor": {
-				"repository": "https://github.com/v2Blueprints/mariadb"
+				"repository": "https://github.com/MarkRatjens/mariadb"
 			},
 			"variables": {
 				"username": "^^identifier^^",
