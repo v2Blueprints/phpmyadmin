@@ -10,7 +10,7 @@
 		{
 			"type": "embed",
 			"descriptor": {
-				"repository": "https://github.com/MarkRatjens/ap_php7"
+				"repository": "https://github.com/v2Blueprints/ap_php7"
 			},
 			"configuration": {
 				"TZ": "Australia/Sydney",
@@ -20,7 +20,7 @@
 		},
 		{
 			"descriptor": {
-				"repository": "https://github.com/MarkRatjens/mariadb"
+				"repository": "https://github.com/v2Blueprints/mariadb"
 			}
 		}
 	],
