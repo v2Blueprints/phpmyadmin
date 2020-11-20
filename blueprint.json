@@ -1,9 +1,11 @@
 {
-	"title": "nagios",
-	"description": "Nagios Monitoring",
+	"title": "phpmyadmin",
+	"description": "phpmyadmin",
 	"os_packages": {
 		"adds": [
-			"phpmyadmin"
+		    "mariadb-client",
+			"php-json", 
+			"php-mbstring"
 		]
 	},
 	"bindings": [
@@ -24,6 +26,16 @@
 			}
 		}
 	],
+	"packages": [
+  {
+    "descriptor": {
+      "repository": "http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz",
+      "extraction": "tar -xzpf",
+      "extracted_path": "phpMyAdmin-4.6.4-all-languages",
+      "destination": "/usr/share/phpmyadmin"
+    }
+  }
+],
 	"containers": [
 		{
 			"type": "lxd"
