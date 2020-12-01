@@ -4,7 +4,7 @@
 	"os_packages": {
 		"adds": [
 		    "mariadb-client",
-			"php-json", 
+			"php-json",
 			"php-mbstring"
 		]
 	},
@@ -27,15 +27,20 @@
 		}
 	],
 	"packages": [
-  {
-    "descriptor": {
-      "repository": "http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz",
-      "extraction": "tar -xzpf",
-      "extracted_path": "phpMyAdmin-4.6.4-all-languages",
-      "destination": "/usr/share/phpMyAdmin"
-    }
-  }
-],
+	  {
+	    "descriptor": {
+	      "repository": "http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz",
+	      "extraction": "tar -xzpf",
+	      "extracted_path": "phpMyAdmin-4.6.4-all-languages",
+	      "destination": "/usr/share/phpMyAdmin"
+	    }
+	  }
+	],
+	"packing": {
+		"late": [
+			"database"
+    ]
+  },
 	"containers": [
 		{
 			"type": "lxd"
