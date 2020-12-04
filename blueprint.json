@@ -1,25 +1,6 @@
 {
 	"title": "phpmyadmin",
 	"description": "phpmyadmin",
-	"os_packages": {
-		"adds": [
-			"mariadb-client",
-			"php-json",
-			"php-mbstring"
-		]
-	},
-	"modules": {
-		"php": [
-			"mysql",
-			"mbstring",
-			"gd2",
-			"zip",
-			"openssl"
-		],
-		"apache": [
-			"rewrite"
-		]
-	},
 	"bindings": [
 		{
 			"type": "embed",
@@ -38,16 +19,40 @@
 			}
 		}
 	],
-	"packages": [
-		{
-			"descriptor": {
-				"repository": "http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz",
-				"extraction": "tar -xzpf",
-				"extracted_path": "phpMyAdmin-4.6.4-all-languages",
-				"destination": "/usr/share/phpMyAdmin"
-			}
-		}
+	"system_packages": {
+		"adds": [
+		  "mariadb-client",
+			"php-json",
+			"php-mbstring"
+		]
+	},
+	"other_packages": [
+	  {
+	    "descriptor": {
+	      "repository": "http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz",
+	      "extraction": "tar -xzpf",
+	      "extracted_path": "phpMyAdmin-4.6.4-all-languages",
+	      "destination": "/usr/share/phpMyAdmin"
+	    }
+	  }
 	],
+	"modules": {
+		"php": [
+			"mysql",
+			"mbstring",
+			"gd2",
+			"zip",
+			"openssl"
+		],
+		"apache": [
+			"rewrite"
+		]
+	},
+	"packing": {
+		"late": [
+			"database"
+    ]
+  },
 	"containers": [
 		{
 			"type": "lxd"
