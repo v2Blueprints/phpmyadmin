@@ -37,15 +37,15 @@
 	  }
 	],
 	"modules": {
-		"apache": [
-			"rewrite"
-		],
 		"php": [
+			"mysql",
 			"mbstring",
 			"gd2",
 			"zip",
-			"openssl",
-			"mysql"
+			"openssl"
+		],
+		"apache": [
+			"rewrite"
 		]
 	},
 	"packing": {
