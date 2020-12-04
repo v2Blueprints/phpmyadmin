@@ -1,13 +1,6 @@
 {
 	"title": "phpmyadmin",
 	"description": "phpmyadmin",
-	"os_packages": {
-		"adds": [
-		    "mariadb-client",
-			"php-json",
-			"php-mbstring"
-		]
-	},
 	"bindings": [
 		{
 			"type": "embed",
@@ -26,7 +19,14 @@
 			}
 		}
 	],
-	"packages": [
+	"system_packages": {
+		"adds": [
+		  "mariadb-client",
+			"php-json",
+			"php-mbstring"
+		]
+	},
+	"other_packages": [
 	  {
 	    "descriptor": {
 	      "repository": "http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz",
@@ -36,6 +36,18 @@
 	    }
 	  }
 	],
+	"modules": {
+		"apache": [
+			"rewrite"
+		],
+		"php": [
+			"mbstring",
+			"gd2",
+			"zip",
+			"openssl",
+			"mysql"
+		]
+	},
 	"packing": {
 		"late": [
 			"database"
