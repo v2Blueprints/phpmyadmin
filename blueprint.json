@@ -29,11 +29,11 @@
 	"other_packages": [
 	  {
 	    "descriptor": {
-	      "repository": "http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz",
-	      "extraction": "tar -xzpf",
-	      "extracted_path": "phpMyAdmin-4.6.4-all-languages",
-	      "destination": "/usr/share/phpMyAdmin"
-	    }
+	      "repository": "http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz"
+	    },
+			"extraction": "tar -xzpf",
+			"extracted_path": "phpMyAdmin-4.6.4-all-languages",
+			"destination": "/usr/share/phpMyAdmin"
 	  }
 	],
 	"modules": {
