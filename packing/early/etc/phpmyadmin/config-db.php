@@ -4,7 +4,7 @@
 $dbuser='^^mariadb.username^^';
 $dbpass='^^mariadb.password^^';
 $basepath='';
-$dbname='^^mariadb.databasename^^';
+$dbname='^^mariadb.database_name^^';
 $dbserver='^^mariadb.hostname^^';
 $dbport='3306';
 $dbtype='mariadb';
