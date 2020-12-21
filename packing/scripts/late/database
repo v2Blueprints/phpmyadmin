@@ -1,4 +1,6 @@
 #!/bin/sh
 
-
+ls -lR /usr/share/phpMyAdmin
 mysql -h ^^mariadb.hostname^^ --user ^^mariadb.username^^ --password=^^mariadb.password^^ ^^mariadb.database_name^^ < /usr/share/phpmyadmin/sql/create_tables.sql
+
+echo t
