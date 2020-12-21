@@ -23,7 +23,8 @@
 		"adds": [
 		  "mariadb-client",
 			"php-json",
-			"php-mbstring"
+			"php-mbstring",
+			"unzip"
 		]
 	},
 	"other_packages": [
