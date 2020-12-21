@@ -27,9 +27,7 @@
 			"unzip",
 			"php-mysql",
 			"php-zip",
-			"php-gd",
-			
-			
+			"php-gd"					
 		]
 	},
 	"other_packages": [
