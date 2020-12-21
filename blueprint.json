@@ -24,7 +24,12 @@
 		  "mariadb-client",
 			"php-json",
 			"php-mbstring",
-			"unzip"
+			"unzip",
+			"php-mysql",
+			"php-zip",
+			"php-gd",
+			
+			
 		]
 	},
 	"other_packages": [
@@ -41,9 +46,8 @@
 		"php": [
 			"mysql",
 			"mbstring",
-			"gd2",
-			"zip",
-			"openssl"
+			"gd",
+			"zip"
 		],
 		"apache": [
 			"rewrite"
