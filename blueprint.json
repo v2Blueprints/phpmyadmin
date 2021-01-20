@@ -6,7 +6,7 @@
 	"bindings": [
 		{
 			"type": "embed",
-			"descriptor": {
+			"target": {
 				"repository": "https://github.com/v2Blueprints/ap_php7"
 			},
 			"configuration": {
@@ -16,7 +16,7 @@
 			}
 		},
 		{
-			"descriptor": {
+			"target": {
 				"repository": "https://github.com/v2Blueprints/mariadb"
 			}
 		}
@@ -34,7 +34,7 @@
 	},
 	"other_packages": [
 	  {
-	    "descriptor": {
+	    "target": {
 	      "repository": "http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz"
 	    },
 			"extraction": "tar -xzpf",
