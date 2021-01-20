@@ -1,6 +1,8 @@
 {
-	"title": "phpmyadmin",
-	"description": "phpmyadmin",
+	"about": {
+		"title": "phpmyadmin",
+		"explanation": "phpmyadmin"
+	},
 	"bindings": [
 		{
 			"type": "embed",
@@ -27,7 +29,7 @@
 			"unzip",
 			"php-mysql",
 			"php-zip",
-			"php-gd"					
+			"php-gd"
 		]
 	},
 	"other_packages": [
