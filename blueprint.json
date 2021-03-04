@@ -17,7 +17,7 @@
 		},
 		{
 			"target": {
-				"repository": "https://github.com/v2Blueprints/mariadb"
+				"repository": "https://github.com/MarkRatjens/mariadb"
 			}
 		}
 	],
