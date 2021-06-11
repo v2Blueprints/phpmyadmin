@@ -60,7 +60,7 @@
   },
 	"containers": [
 		{
-			"type": "lxd"
+			"type": "docker"
 		}
 	]
 }
