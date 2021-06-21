@@ -1,20 +1,20 @@
 #note this is including what was in ap_php7 and apache
 #Prior to this the add_service script has to be run on mariadb
 
-From: enginesd_debian_base  #Note image name here is too long 
+From enginesd_debian_base  #Note image name here is too long 
 
 
 ADD packing/early/ /
 
 #Only required if configuration overides base configuration params TZ locale, char set, repo list
-RUN /tmp/packing/scripts/early/locale &\\
-    /tmp/packing/scripts/early/set_time_zone &\\
+RUN /tmp/packing/scripts/early/locale &&\
+    /tmp/packing/scripts/early/set_time_zone &&\
     /tmp/packing/scripts/early/repos 
     
-RUN ENGINES_PACKAGES="apache2 php mariadb-client php-json php-mbstring unzip php-mysql php-zip php-gd" /tmp/packing/scripts/late/install-packages
+RUN /tmp/packing/scripts/late/install-packages apache2 php mariadb-client php-json php-mbstring unzip php-mysql php-zip php-gd
 
-RUN PHP_MODULES="mysql mbstring gd zip" /tmp/packing/scripts/late/install_php_modules
-RUN APACHE_MODULES="rewrite" /tmp/packing/scripts/late/install_apache_modules
+RUN  /tmp/packing/scripts/late/install_php_modules mysql mbstring gd zip
+RUN  /tmp/packing/scripts/late/install_apache_modules rewrite
 
 RUN /tmp/packing/scripts/late/install_packages http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz "tar -xzpf" phpMyAdmin-4.6.4-all-languages /usr/share/phpMyAdmin
 
