@@ -2,7 +2,7 @@
 
 if test -f /root/setup.sh
 then
- /root/setup.sh
+ setup_phpmyadmin.sh
 fi
 
 exec /usr/sbin/apache2ctl -DFOREGROUND
