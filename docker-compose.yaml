@@ -1,49 +1,70 @@
-version: "3.9"
+version: "3.3"
 services:
 
- phpmyadmin:
-   build:
-   context: ./phpmyadmin_docker_dir
-   target: phpmyadmin
-    depends_on:
-      - mysql
-   deploy:
-   domainname: foo.com
-   hostname: foo
-       restart_policy:
-         condition: on-failure
-         delay: 5s
-         max_attempts: 3
-         window: 120s
-    ports:
-    - target: 80
-      published: 8080
-      protocol: tcp
-      mode: host
-      
- mysql:
+ mariadb:
   build:
-   context: ./mysql_docker_dir
-   args:
+    context: ./mariadb_docker_dir
+    args:
      - buildno
      - gitcommithash
-   labels:
-    author: james
-    other_label: gidday
-   target: mysql-server  
+    labels:
+     author: james
+     other_label: gidday
+  deploy:
+     restart_policy:
+       condition: on-failure
+       delay: 5s
+       max_attempts: 3
+       window: 120s
+     resources:
+       limits:
+         cpus: '1'
+         memory: 1G
+  environment:
+    RACK_ENV: development
+    SHOW: 'true'
+  logging:
+     driver: syslog
+     options:
+       syslog-address: "tcp://192.168.0.42:123"
+  volumes:
+       - "dbdata:/var/lib/mysql/data"
+  domainname: foo.com
+  hostname: foo
+ 
+ phpmyadmin:
+   build:
+    context: ./phpmyadmin_docker_dir
+   depends_on:
+    - mysql 
+    - wap
+   domainname: foo.com
+   hostname: foo
    deploy:
-       restart_policy:
-         condition: on-failure
-         delay: 5s
-         max_attempts: 3
-         window: 120s
-   resources:
+    restart_policy:
+     condition: on-failure
+     delay: 5s
+     max_attempts: 3
+     window: 120s
+      
+ wap:
+   build:
+    context: ./nginx_docker_dir
+   deploy:
+    restart_policy:
+      condition: on-failure
+      delay: 5s
+      max_attempts: 3
+      window: 120s
+    resources:
          limits:
            cpus: '1'
            memory: 1G
-   environment:
-    RACK_ENV: development
-    SHOW: 'true'
+   ports:
+      - target: 80
+        published: 8080
+        protocol: tcp
+        mode: host
    logging:
      driver: syslog
      options:
@@ -52,4 +73,4 @@ services:
        - "dbdata:/var/lib/mysql/data"
    domainname: foo.com
    hostname: foo
- 
+   
