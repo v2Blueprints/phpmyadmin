@@ -3,7 +3,7 @@ services:
 
  mariadb:
   build:
-    context: ./mariadb_docker_dir
+    context: ./mariadb
     args:
      - buildno
      - gitcommithash
@@ -28,18 +28,18 @@ services:
      options:
        syslog-address: "tcp://192.168.0.42:123"
   volumes:
-       - "dbdata:/var/lib/mysql/data"
-  domainname: foo.com
-  hostname: foo
+       - "/var/lib/engines/volumes/mariadb/data:/var/lib/mysql/data"
+  domainname: engines.internal
+  hostname: mariadb
  
  phpmyadmin:
    build:
-    context: ./phpmyadmin_docker_dir
+    context: ./phpmyadmin
    depends_on:
-    - mysql 
+    - mariadb 
     - wap
-   domainname: foo.com
-   hostname: foo
+   domainname: engines.internal
+   hostname: phpmyadmin
    deploy:
     restart_policy:
      condition: on-failure
@@ -49,7 +49,7 @@ services:
       
  wap:
    build:
-    context: ./nginx_docker_dir
+    context: ./wap
    deploy:
     restart_policy:
       condition: on-failure
@@ -65,12 +65,17 @@ services:
         published: 8080
         protocol: tcp
         mode: host
+      - target: 443
+        published: 4430
+        protocol: tcp
+        mode: host
    logging:
      driver: syslog
      options:
        syslog-address: "tcp://192.168.0.42:123"
    volumes:
-       - "dbdata:/var/lib/mysql/data"
-   domainname: foo.com
-   hostname: foo
+       - "/var/lib/engines/volumes/wap/config:/etc/nginx"
+       - "/var/lib/engines/volumes/wap/certs:/etc/nginx/ssl"
+   domainname: engines.internal
+   hostname: wap
    
