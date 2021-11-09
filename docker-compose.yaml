@@ -30,7 +30,7 @@ services:
      options:
        syslog-address: "tcp://192.168.0.42:123"
   volumes:
-       - "/var/lib/engines/volumes/mariadb/data:/var/lib/mysql/data"
+       - "/var/lib/engines/volumes/mariadb/:/var/lib/mysql/data"
   domainname: engines.internal
   hostname: mariadb
  
