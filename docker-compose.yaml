@@ -1,83 +1,131 @@
-version: "3.3"
+version: '3.3'
 services:
-
- mariadb:
-  build:
-    context: ./mariadb
+  base:
+   build:
+    context: "/home/james/spaces_working_dir/universe/packs/base_arena/enginesd_debian_base"
     args:
      - buildno
      - gitcommithash
     labels:
      author: james
      other_label: gidday
+
+  phpmyadmin:
+    domainname: docker-arena.engines.internal
+    hostname: phpmyadmin
+    build:
+      context: "/home/james/spaces_working_dir/universe/packs/docker_arena/phpmyadmin"
+      args:
+      - buildno
+      - gitcommithash
+      labels:
+        author: james
+        other_label: gidday
+    depends_on:
+    - mariadb
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
     sysctls:
       net.core.somaxconn: 1024
-  deploy:
-     restart_policy:
-       condition: on-failure
-       delay: 5s
-       max_attempts: 3
-       window: 120s
-     resources:
-       limits:
-         cpus: '1'
-         memory: 1G
-  environment:
-    RACK_ENV: development
-    SHOW: 'true'
-  logging:
-     driver: syslog
-     options:
-       syslog-address: "tcp://192.168.0.42:123"
-  volumes:
-       - "/var/lib/engines/volumes/mariadb/:/var/lib/mysql/data"
-  domainname: engines.internal
-  hostname: mariadb
- 
- phpmyadmin:
-   build:
-    context: ./phpmyadmin
-   depends_on:
-    - mariadb 
-    - wap
-   domainname: engines.internal
-   hostname: phpmyadmin
-   deploy:
-    restart_policy:
-     condition: on-failure
-     delay: 5s
-     max_attempts: 3
-     window: 120s
-      
- wap:
-   build:
-    context: ./wap
-   deploy:
-    restart_policy:
-      condition: on-failure
-      delay: 5s
-      max_attempts: 3
-      window: 120s
-    resources:
-         limits:
-           cpus: '1'
-           memory: 1G
-   ports:
-      - target: 80
-        published: 8080
-        protocol: tcp
-        mode: host
-      - target: 443
-        published: 4430
-        protocol: tcp
-        mode: host
-   logging:
-     driver: syslog
-     options:
-       syslog-address: "tcp://192.168.0.42:123"
-   volumes:
-       - "/var/lib/engines/volumes/wap/config:/etc/nginx"
-       - "/var/lib/engines/volumes/wap/certs:/etc/nginx/ssl"
-   domainname: engines.internal
-   hostname: wap
-   
+    environment:
+      timezone_country_city: ''
+      ServerAdmin: webmaster@localhost
+      ServerName: phpmyadmin.docker-arena.localhost
+      locale: en_AU
+      charset: UTF-8
+    logging:
+      driver: syslog
+      options:
+        syslog-address: tcp://192.168.0.42:123
+  mariadb:
+    domainname: docker-arena.engines.internal
+    hostname: mariadb
+    build:
+      context: "/home/james/spaces_working_dir/universe/packs/docker_arena/mariadb"
+      args:
+      - buildno
+      - gitcommithash
+      labels:
+        author: james
+        other_label: gidday
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+    sysctls:
+      net.core.somaxconn: 1024
+    environment:
+      root_password: f6df6a87549083fdb965eb80a4572663c246273b79cc0bcc16a482fabc704459
+      max_allowed_packet: 4M
+      event_scheduler: '1'
+      sql_mode: '1'
+      local_infile: '1'
+      innodb_buffer_pool_size: '134217728'
+      locale: en_AU
+      charset: UTF-8    
+    logging:
+      driver: syslog
+      options:
+        syslog-address: tcp://192.168.0.42:123
+    volumes:
+    - "/var/lib/engines/mariadb/:/var/lib/mysql/"
+  wap:
+    domainname: docker-arena.engines.internal
+    hostname: wap
+    build:
+      context: "/home/james/spaces_working_dir/universe/packs/docker_arena/wap"
+      args:
+      - buildno
+      - gitcommithash
+      labels:
+        author: james
+        other_label: gidday
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+    sysctls:
+        net.core.somaxconn: 1024
+    environment:
+      default_site: ''
+      locale: en_AU
+      charset: UTF-8
+    ports:
+    - target: 80
+      published: 8000
+      protocol: tcp
+      mode: host
+    - target: 443
+      published: 4430
+      protocol: tcp
+      mode: host
+    logging:
+      driver: syslog
+      options:
+        syslog-address: tcp://192.168.0.42:123
+    volumes:
+    - "/var/lib/engines/volumes/wap/config:/etc/nginx"
+    - "/var/lib/engines/volumes/wap/certs:/etc/nginx/ssl"
+
+
+
