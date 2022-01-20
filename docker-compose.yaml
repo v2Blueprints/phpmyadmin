@@ -15,6 +15,7 @@ services:
     hostname: phpmyadmin
     build:
       context: "/home/james/spaces_working_dir/universe/packs/docker_arena/phpmyadmin"
+      container_name: "phpmyadmin"
       args:
       - buildno
       - gitcommithash
@@ -40,7 +41,7 @@ services:
       ServerAdmin: webmaster@localhost
       ServerName: phpmyadmin.docker-arena.localhost
       locale: en_AU
-      charset: UTF-8
+      charset: UTF8
     logging:
       driver: syslog
       options:
