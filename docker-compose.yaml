@@ -13,9 +13,9 @@ services:
   phpmyadmin:
     domainname: docker-arena.engines.internal
     hostname: phpmyadmin
+    container_name: "phpmyadmin"
     build:
       context: "/home/james/spaces_working_dir/universe/packs/docker_arena/phpmyadmin"
-      container_name: "phpmyadmin"
       args:
       - buildno
       - gitcommithash
