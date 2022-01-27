@@ -4,14 +4,14 @@
     "title": "phpmyadmin",
     "explanation": "phpmyadmin test"
   },
+  "input": {
+    "TZ": "Australia/Sydney",
+    "port": 8880,
+    "ServerAdmin": "Mysql Admin"
+  },
   "bindings": [
     {
       "type": "embed",
-      "configuration": {
-        "TZ": "Australia/Sydney",
-        "port": 8880,
-        "ServerAdmin": "Mysql Admin"
-      },
       "target": {
         "repository": "https://github.com/v2Blueprints/ap_php7"
       }
