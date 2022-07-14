@@ -32,7 +32,7 @@
       "php-gd"
     ]
   },
-  "other_packages": [
+  "bundled_packages": [
     {
       "target": {
         "repository": "http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz"
@@ -42,7 +42,7 @@
       "destination": "/usr/share/phpMyAdmin"
     }
   ],
-  "modules": {
+  "managed_packages": {
     "php": [
       "mysql",
       "mbstring",
